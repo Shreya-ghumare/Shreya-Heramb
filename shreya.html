@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>For My Love ❤️</title>
+
+<style>
+body{
+  margin:0;
+  font-family: "Segoe UI", cursive;
+  background: linear-gradient(135deg,#ff9a9e,#fad0c4);
+
+  /* LOCK SCROLL INITIALLY */
+  overflow:hidden;
+
+  /* smooth scroll */
+  scroll-behavior:smooth;
+  text-align:center;
+}
+
+.fallHeart{
+  position:absolute;
+  font-size:22px;
+}
+
+
+/* ---------- PASSWORD PAGE ---------- */
+#lockScreen{
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
+
+input{
+  padding:10px;
+  border-radius:10px;
+  border:none;
+  margin:10px;
+}
+
+/* ---------- MAIN CARD ---------- */
+#main{
+  display:none;
+  min-height:120vh;   /* makes page scrollable */
+  padding-bottom:40px;
+}
+
+.card{
+  background:white;
+  max-width:420px;
+  margin:30px auto;
+  padding:25px;
+  border-radius:25px;
+  box-shadow:0 10px 30px rgba(0,0,0,.2);
+}
+
+button{
+  padding:10px 20px;
+  border:none;
+  border-radius:20px;
+  background:#ff4b6e;
+  color:white;
+  margin:6px;
+  cursor:pointer;
+}
+
+button:hover{
+  transform:scale(1.1);
+}
+
+
+
+/* slideshow */
+.slideshow{
+  width:100%;
+  max-width:450px;
+  height:350px;
+  margin:15px auto;
+  overflow:hidden;
+  border-radius:20px;
+}
+
+.slideshow img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:none;
+}
+
+/* hearts */
+.heart{
+  position:absolute;
+  color:#ff4b6e;
+  animation: float 6s linear infinite;
+}
+@keyframes float{
+  from{transform:translateY(100vh);}
+  to{transform:translateY(-10vh);}
+}
+
+/* fireworks */
+.firework{
+  position:absolute;
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  animation: explode 1s ease-out forwards;
+}
+@keyframes explode{
+  to{
+    transform:translate(var(--x),var(--y));
+    opacity:0;
+  }
+}
+
+
+
+
+/* memory quiz */
+#quizBox{
+  background:#fff0f5;
+  padding:12px;
+  border-radius:15px;
+  margin-top:15px;
+}
+
+.quizBtn{
+  display:block;
+  width:100%;
+  margin:6px 0;
+  background:#ff6b81;
+}
+</style>
+</head>
+
+<body>
+
+<!-- PASSWORD SCREEN -->
+<div id="lockScreen">
+  <h2>Enter the secret password ❤️</h2>
+  <input id="passInput" type="password" placeholder="password">
+  <button onclick="checkPass()">Unlock</button>
+  <p id="wrong"></p>
+</div>
+
+<!-- MAIN PAGE -->
+<div id="main">
+  <div class="card">
+
+    <h1>Happy Valentine's Day Gadgil ❤️</h1>
+    <div id="countdown"></div>
+
+    <!-- Slideshow -->
+    <div class="slideshow">
+      <img src="photo 1.jpg" class="slide">
+      <img src="photo2.jpeg" class="slide">
+      <img src="photo 3.jpg" class="slide">
+      <img src="photo 4.jpg" class="slide">
+      <img src="photo 5.jpg" class="slide">
+      <img src="photo 6.jpeg" class="slide">
+      <img src="photo 7.jpeg" class="slide">
+      <img src="photo 8.jpeg" class="slide">
+    </div>
+
+    <button onclick="showLetter()">Open Love Letter 💌</button>
+    <p id="letter" style="display:none">
+      My Love ❤️,
+      <br >I don’t even know where to begin, because putting into words how much you mean to me feels almost impossible. From the moment you came into my life, everything became a little brighter, a little warmer, and a lot more meaningful.</br>
+
+
+<br>You  have this incredible way of making me feel safe, understood, and deeply cared for. Whether it’s the way you listen to me, the way you make me laugh when I’m stressed,  the way you simply hold my hand,or the way you care about  my opinion ,  you make ordinary moments feel magical.</br>
+
+
+<br>I love your smile. I love your voice in baby tone . I Love the way you’re so obessed with me and also the way you just can't live without me   that makes me feel so special .  I love the way your eyes light up when you talk about something you’re passionate about. I love  the way you talk about our future .It makes me feel so safe because through that it seems how much you’re so sure about me to be your wife . more than anything, I love your heart — your kindness, your strength, your patience, and the way you love me so effortlessly.</br>
+
+<br> I am so grateful to have a boyfriend (future Husband)like you .Thank you for choosing me as a life partner . Thank you for handling my rudness and anger. Thank you for respecting the things which really matters to me . Thank you for handling heated situation calmly . Thank you for accepting & respecting my love towards lord shiva .</br> 
+<br>Being with you feels like home. You’re my best friend, my safe place, my biggest supporter, and my favorite person all wrapped into one. I am so grateful for every memory we’ve made and so excited for all the ones still waiting for us. The only person who can really care about me after my father is you so Thank you for that</br>
+
+<br>No matter what life brings, I want you to know that I’m always here with you in your best and  worst .</br>
+ I choose you — today, tomorrow, and always. ❤️
+    </p>
+
+    
+
+    <button onclick="startQuiz()">Memory Quiz 🧠</button>
+    <div id="quizBox" style="display:none;">
+      <h3 id="qText"></h3>
+      <div id="answers"></div>
+      <p id="quizScore"></p>
+    </div>
+
+    <button onclick="startGame()">Valentine Question ❤️</button>
+    <div id="valGame" style="display:none">
+      <h5>Everyone keeps asking, “Will you be my Valentine?” — but that’s too ordinary for someone like you</h5>
+      <h5>So let me ask you something far more special…</h5>
+      <h5> Would you do me the incredible honor of being maza gharcha ekulta javai — the one and only son-in-law of my home and the forever in my story? ❤️</h5>
+      <button onclick="alert('Yayyy I love you!!! ❤️')">YES</button>
+      <button id="noBtn" onmouseover="moveNo()">NO</button>
+    </div>
+     <button onclick="startFallingGame()">Catch My Heart Game 🥺❤️</button>
+
+    <div id="fallGame" style="display:none; position:relative; height:300px; background:#fff0f5; border-radius:20px; overflow:hidden; margin-top:15px;">
+      <div id="catchPlayer" style="position:absolute; bottom:10px; font-size:35px;">🥺</div>
+    </div>
+
+    <p id="fallScore"></p>
+
+  </div>
+</div>
+
+<audio id="bgMusic" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const PASSWORD = "Gadgil";
+
+/* ✅ UPDATED: ENABLE SCROLL AFTER UNLOCK */
+function checkPass(){
+  const val=document.getElementById("passInput").value;
+
+  if(val===PASSWORD){
+    fireworks();
+
+    setTimeout(()=>{
+      document.getElementById("lockScreen").style.display="none";
+      document.getElementById("main").style.display="block";
+
+      document.body.style.overflow="auto";
+
+      // 🎵 PLAY MUSIC HERE
+      const music = document.getElementById("bgMusic");
+      music.play();
+
+    },1200);
+
+  } else {
+    document.getElementById("wrong").innerText="Wrong password 😢 try again";
+  }
+}
+
+
+/* fireworks */
+function fireworks(){
+  for(let i=0;i<80;i++){
+    const f=document.createElement("div");
+    f.className="firework";
+    f.style.left="50%";
+    f.style.top="50%";
+    f.style.background=`hsl(${Math.random()*360},100%,60%)`;
+    f.style.setProperty("--x",(Math.random()*400-200)+"px");
+    f.style.setProperty("--y",(Math.random()*400-200)+"px");
+    document.body.appendChild(f);
+    setTimeout(()=>f.remove(),1000);
+  }
+}
+
+/* slideshow */
+let slides=document.querySelectorAll(".slide");
+let i=0;
+function showSlide(){
+  slides.forEach(s=>s.style.display="none");
+  slides[i].style.display="block";
+  i=(i+1)%slides.length;
+}
+setInterval(showSlide,2000);
+showSlide();
+
+/* countdown */
+function updateCountdown(){
+  const val=new Date("Feb 14, 2026 00:00:00");
+  const now=new Date();
+  const diff=val-now;
+  const d=Math.floor(diff/86400000);
+  document.getElementById("countdown").innerText="Countdown: "+d+" days ❤️";
+}
+setInterval(updateCountdown,1000);
+
+/* love letter */
+function showLetter(){
+  document.getElementById("letter").style.display="block";
+}
+
+/* floating hearts */
+setInterval(()=>{
+  const h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="❤️";
+  h.style.left=Math.random()*100+"vw";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),6000);
+},400);
+
+
+/* ---------------- YES/NO GAME ---------------- */
+function startGame(){
+  document.getElementById("valGame").style.display="block";
+}
+function moveNo(){
+  const btn=document.getElementById("noBtn");
+  btn.style.position="absolute";
+  btn.style.left=Math.random()*250+"px";
+  btn.style.top=Math.random()*150+"px";
+}
+
+
+/* ---------------- MEMORY QUIZ ---------------- */
+const questions = [
+  {q: "Where was our first date? ❤️", a:["McDonalds","Dominos","Burger king","Restaurant"], correct:0},
+  {q: "What is our favourite fast food chain? 😘", a:["Taco bell","Wendies","McDonalds","Subway"], correct:2},
+  {q: "Our favorite thing to do together?", a:["Travel","Watch movies","Cuddle","Eating"], correct:2},
+  {q: "Who said 'I love you' first? 💕", a:["Me","You"], correct:1}
+];
+let currentQ=0;
+let quizPoints=0;
+
+function startQuiz(){
+  document.getElementById("quizBox").style.display="block";
+  currentQ=0;
+  quizPoints=0;
+  document.getElementById("quizScore").innerText="";
+  showQuestion();
+}
+
+function showQuestion(){
+  const question=questions[currentQ];
+  document.getElementById("qText").innerText=question.q;
+  const answersDiv=document.getElementById("answers");
+  answersDiv.innerHTML="";
+  question.a.forEach((text,i)=>{
+    const btn=document.createElement("button");
+    btn.className="quizBtn";
+    btn.innerText=text;
+    btn.onclick=()=>checkAnswer(i);
+    answersDiv.appendChild(btn);
+  });
+}
+
+function checkAnswer(i){
+  if(i===questions[currentQ].correct) quizPoints++;
+  currentQ++;
+  if(currentQ<questions.length){
+    showQuestion();
+  } else {
+    finishQuiz();
+  }
+}
+
+function finishQuiz(){
+  document.getElementById("answers").innerHTML="";
+  document.getElementById("qText").innerText="Quiz finished! ❤️";
+  let msg="";
+  if(quizPoints===questions.length) msg="Perfect score! You know us so well 🥰";
+  else if(quizPoints>=questions.length/2) msg="Awww you remember most of our memories 💕";
+  else msg="Hehe we need to make more memories together 😘";
+  document.getElementById("quizScore").innerText="Score: "+quizPoints+"/"+questions.length+" — "+msg;
+}
+
+/* ---------------- FALLING HEART GAME ---------------- */
+
+let fallScoreCount = 0;
+let fallInterval;
+
+function startFallingGame(){
+  const game = document.getElementById("fallGame");
+  const player = document.getElementById("catchPlayer");
+  const scoreText = document.getElementById("fallScore");
+
+  game.style.display = "block";
+  fallScoreCount = 0;
+  scoreText.innerText = "Score: 0";
+
+  // move player with mouse
+  document.addEventListener("mousemove", function(e){
+    const rect = game.getBoundingClientRect();
+    player.style.left = (e.clientX - rect.left) + "px";
+  });
+
+  // create falling hearts
+  fallInterval = setInterval(()=>{
+    const heart = document.createElement("div");
+    heart.className = "fallHeart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random()*game.clientWidth + "px";
+    heart.style.top = "0px";
+    game.appendChild(heart);
+
+    let drop = setInterval(()=>{
+      heart.style.top = (parseInt(heart.style.top)+5) + "px";
+
+      const hRect = heart.getBoundingClientRect();
+      const pRect = player.getBoundingClientRect();
+
+      if(
+        hRect.bottom > pRect.top &&
+        hRect.left < pRect.right &&
+        hRect.right > pRect.left
+      ){
+        fallScoreCount++;
+        scoreText.innerText = "Score: " + fallScoreCount;
+        heart.remove();
+        clearInterval(drop);
+
+        if(fallScoreCount >= 10){
+          alert("You caught my heart 10 times ❤️ I love you!");
+          clearInterval(fallInterval);
+          game.style.display = "none";
+        }
+      }
+
+      if(parseInt(heart.style.top) > game.clientHeight){
+        heart.remove();
+        clearInterval(drop);
+      }
+
+    },20);
+
+  },700);
+}
+
+</script>
+
+</body>
+</html>
